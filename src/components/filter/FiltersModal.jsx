@@ -75,7 +75,7 @@ const FiltersModal = ({ isOpen, closeModal, filters, setFilters }) => {
   },[localFilters])
 
   return (
-    <Modal isOpen={isOpen} onRequestClose={closeModal} className="bg-white p-4 shadow-lg max-w-lg mx-auto border-main-color border-2 border-solid max-h-96 flex flex-col items-stretch gap-4">
+    <Modal isOpen={isOpen} onRequestClose={closeModal} className="bg-white p-4 shadow-filters-shadow max-w-lg mx-auto border-main-color border-[3px] border-solid max-h-96 flex flex-col items-stretch gap-4">
       <div className='w-full flex items-center justify-between'>
         <h2 className="text-xl font-bold">Apply Filters</h2>
         <button onClick={closeModal} className='hover:text-danger-color duration-300'>
@@ -83,7 +83,7 @@ const FiltersModal = ({ isOpen, closeModal, filters, setFilters }) => {
         </button>
       </div>
       {localFilters.map((filter, index) => (
-        <FilterFields 
+        <FilterFields
           key={index}
           index={index} 
           filter={filter}

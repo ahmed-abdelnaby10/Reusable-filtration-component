@@ -10,6 +10,9 @@ module.exports = {
         'border-color': '#e5e7eb',
         'primary-color': '#3b82f6',
         'danger-color': '#ef4444',
+      },
+      boxShadow: {
+        'filters-shadow': '0px 0px 20px -4px rgb(34 197 94)'
       }
     },
   },

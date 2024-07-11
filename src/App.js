@@ -5,6 +5,7 @@ import './index.css';
 import { IoIosColorFilter } from "react-icons/io";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from './lib/rtk/slices/productsSlice';
+import { BiSort } from 'react-icons/bi';
 
 
 const App = () => {
@@ -70,19 +71,28 @@ const App = () => {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Product Filter</h1>
-      <button onClick={openModal} className="bg-primary-color text-white p-2 rounded mb-4 flex items-center gap-4">
-        Filter
-        <IoIosColorFilter className='text-lg'/>
-      </button>
+    <div className="container mx-auto p-4 min-h-screen flex flex-col items-start">
+      <h1 className="text-2xl font-bold mb-4 self-center text-center">Products Filter</h1>
+      <div className='flex items-center justify-between w-full'>
+        <button onClick={openModal} className="bg-primary-color text-white p-2 rounded mb-4 flex items-center gap-4">
+          Filter
+          <IoIosColorFilter className='text-lg'/>
+        </button>
+        <button className="bg-primary-color text-white p-2 rounded mb-4 flex items-center gap-4">
+          Sort
+          <BiSort  className='text-lg'/>
+        </button>
+      </div>
       <FiltersModal
         isOpen={isModalOpen}
         closeModal={closeModal}
         filters={filters}
         setFilters={setFilters}
       />
-      <ProductList products={filteredProducts} />
+      <ProductList 
+        products={filteredProducts}
+        setFilters={setFilters}
+      />
     </div>
   );
 };

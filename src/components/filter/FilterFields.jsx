@@ -74,7 +74,7 @@ export default function FilterFields(
                         type={filter.field === 'price' ? 'number' : 'text'}
                         value={filter.value} 
                         onChange={(e) => handleValueChange(index, e)} 
-                        className="p-2 border rounded w-full mb-1 focus:outline-main-color focus:ring-offset-main-color" 
+                        className="p-2 border rounded w-full mb-1 focus:outline-none focus:ring-2 focus:ring-main-color" 
                     />
                     <p className="text-gray-500 text-xs">{getHelperText(filter.field)}</p>
                 </div>
