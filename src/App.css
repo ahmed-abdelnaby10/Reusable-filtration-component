@@ -1,0 +1,8 @@
+select option {
+  color: black;
+}
+
+select option:hover {
+  background-color: #22c55e; /* main-color */
+  color: white;
+}
