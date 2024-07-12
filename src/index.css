@@ -45,6 +45,7 @@ code {
   -moz-border-radius: 8px;
   -ms-border-radius: 8px;
   -o-border-radius: 8px;
+  min-width: 360px;
 }
 .ReactModal__Content::-webkit-scrollbar {
   width: 2px;
@@ -56,4 +57,11 @@ code {
   -moz-border-radius: 12px;
   -ms-border-radius: 12px;
   -o-border-radius: 12px;
+}
+
+@media (max-width: 640px) {
+  .ReactModal__Content {
+    min-width: fit-content;
+    width: calc(100% - 36px);
+  }
 }

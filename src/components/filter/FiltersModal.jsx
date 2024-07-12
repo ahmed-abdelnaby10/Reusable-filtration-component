@@ -94,7 +94,8 @@ const FiltersModal = ({ isOpen, closeModal, filters, setFilters }) => {
           removeFilter={removeFilter}
         />
       ))}
-      <FilterActions 
+      <FilterActions
+        localFilters={localFilters}
         applyFilters={applyFilters}
         addFilter={addFilter}
         clearFilters={clearFilters}

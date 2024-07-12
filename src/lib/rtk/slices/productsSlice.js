@@ -3,6 +3,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 // Async thunk to fetch products
 export const fetchProducts = createAsyncThunk("products/fetchProducts", async () => {
   const res = await fetch("/products.json");
+  if (!res.ok) {
+    throw new Error('Failed to fetch products');
+  }
   const data = await res.json();
   console.log("Fetched data:", data)
   return data;
@@ -11,6 +14,8 @@ export const fetchProducts = createAsyncThunk("products/fetchProducts", async ()
 // Initial state with products as an array
 const initialState = {
   products: [],
+  loading: false,
+  error: null,
 };
 
 // Slice with reducers and extra reducers
@@ -19,10 +24,19 @@ const productsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchProducts.fulfilled, (state, action) => {
-        console.log("State updated with:", action.payload)
-      state.products = action.payload;
-    });
+    builder
+      .addCase(fetchProducts.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchProducts.fulfilled, (state, action) => {
+        state.loading = false;
+        state.products = action.payload;
+      })
+      .addCase(fetchProducts.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
   },
 });
 
