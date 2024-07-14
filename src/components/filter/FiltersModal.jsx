@@ -14,8 +14,8 @@ const FiltersModal = ({ isOpen, closeModal, filters, setFilters }) => {
   const [isFilterValue, setIsFilterVallue] = useState(false)
 
   useEffect(()=> {
-    if (products) {
-      setFilterFields(Object.keys(products[0]))
+    if (products[0]) {
+      setFilterFields(Object.keys(products[0] || []))
     }
   },[products])
   
